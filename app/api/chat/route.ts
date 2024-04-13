@@ -3,6 +3,10 @@ import { kv } from '@vercel/kv';
 import { nanoid } from '@/lib/utils';
 import { genAI, generationConfig, safetySettings } from '@/lib/config';
 
+interface Part {
+  text: string;
+}
+
 export async function POST(req: Request) {
   const json = await req.json();
   const { messages } = json;
@@ -25,13 +29,13 @@ export async function POST(req: Request) {
 
   const chatHistory = messages.map((message: { role: string; content: string; }) => ({
     role: message.role,
-    parts: [message.content],
+    parts: [{text: message.content}],
   }));
 
   const chat = model.startChat({
-    history: chatHistory.map((entry: { parts: string; responseMessage: string; }) => [
+    history: chatHistory.map((entry: { parts: Part[] | undefined; responseMessage: string; }) => [
       { role: 'user', parts: entry.parts },
-      { role: 'model', parts: entry.responseMessage || '' },
+      { role: 'model', parts: entry.responseMessage || [{text: ''}] },
     ]).flat(),
     generationConfig,
     safetySettings,
