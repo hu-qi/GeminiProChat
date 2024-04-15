@@ -13,6 +13,20 @@ You can control the website through environment variables.
 -   KV_REST_API_URL
 -   KV_REST_API_TOKEN
 -   KV_REST_API_READ_ONLY_TOKEN
+  
+## Note
+
+If you in China, maybe change and add next code:
+
+```javascript
+// npm i undici
+const { setGlobalDispatcher, ProxyAgent } = require("undici");
+const dispatcher = new ProxyAgent({ uri: new URL('http://127.0.0.1:7890').toString() });
+// Global fetch call enables proxy
+setGlobalDispatcher(dispatcher);
+```
+
+[The more about TypeError: fetch failed](https://github.com/google/generative-ai-js/issues/29)
 
 ## Acknowledgements
 
