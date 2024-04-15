@@ -13,8 +13,12 @@ export function FooterText({ className, ...props }: React.ComponentProps<'p'>) {
       {...props}
     >
       AI chatbot powered by Google&apos;s <ExternalLink href="https://deepmind.google/technologies/gemini/#introduction">Gemini Pro</ExternalLink> -{' '}
-      <ExternalLink href="https://www.sinnedpenguin.me/">
-        sinnedpenguin
+      <ExternalLink href="https://github.com/vercel/ai-chatbot">
+      ai-chatbot
+      </ExternalLink>
+      and &nbsp;
+      <ExternalLink href="https://github.com/hu-qi">
+        hu-qi
       </ExternalLink>
       .
     </p>

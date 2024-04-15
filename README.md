@@ -16,7 +16,7 @@ You can control the website through environment variables.
   
 ## Note
 
-If you in China, maybe change and add next code:
+If you in China, maybe change `app/api/chat/route.tss` and add next code:
 
 ```javascript
 // npm i undici
@@ -32,4 +32,4 @@ setGlobalDispatcher(dispatcher);
 
 This project is inspired by and based on the following open-source project:
 
--   [sinnedpenguin](https://www.sinnedpenguin.me/) - For the foundational codebase and features.
+-   [vercel/ai-chatbot](https://github.com/vercel/ai-chatbot) - For the foundational codebase and features.
